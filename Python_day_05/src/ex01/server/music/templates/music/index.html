@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'music/css/style.css' %}">
+    <link rel="icon" href="{% static 'music/img/logo1.svg' %}" type="image/x-icon">
+    <title>FM: Fossowan Music</title>
+</head>
+<body style="background-image: url('{% static 'music/img/background.jpg' %}');">
+    <div class="wrapper">
+        <h2>Your music:</h2>
+        {% for music in music_list %}
+        <div class="music_block">
+            <p>{{ music.name }}</p>
+            <audio controls>
+                <source src="media/{{ music.name }}" type="{{ music.content_type }}">
+            </audio>
+        </div>
+        {% empty %}
+            <p>Сейчас загруженной музыки нет, но вы всегда можете загрузить её!</p>
+        {% endfor %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        {{ music_form }}
+        <br>
+        <input type="submit" value="Отправить">
+        </form>
+        <div>
+            {% for message in messages %}
+                {% autoescape off %}
+                    {{ message }}
+                {% endautoescape %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
