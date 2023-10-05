@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+package ex01;
+
+service Galaxy {
+    rpc get_ships(GalacticPossition) returns (stream Ships) {}
+}
+
+enum TaskState {
+    TASK_OPEN = 0;
+    TASK_IN_PROGRESS = 1;
+    TASK_POST_PONED = 2;
+    TASK_CLOSED = 3;
+    TASK_DONE = 4;
+}
+
+message GalacticPossition {
+    repeated float pos = 1;
+}
+
+message Ship {
+    
+    message Officer {
+        optional string first_name = 1;
+        optional string second_name = 2;
+        optional string rank = 3;
+    }
+    
+    enum AlignmentType {
+        Ally = 0;
+        Enemy = 1;
+    }
+
+    enum ClassType {
+        Corvette = 0;
+        Frigate = 1;
+        Cruiser = 2;
+        Destroyer = 3;
+        Carrier = 4;
+        Dreadnought = 5;
+    }
+
+    required AlignmentType alignment = 1 [default = Ally];
+    required string name = 2 [default = "Unknown"];
+    required ClassType ship_class = 3;
+    required float length = 4;
+    required int32 crew_size = 5;
+    required bool armed = 6;
+    repeated Officer officers = 7;
+}
+
+message Ships {
+    repeated Ship ship = 1;
+}
