@@ -68,10 +68,6 @@ performing HTTP queries.
 
 <h3 id="exercise-02-good-timing">Exercise 02: Good Timing</h3>
 
-Oh boy. There are five unpredictable time lords at our hands. Think of them as threads, so at any
-moment in time there is no way to predict which of them will be acting. So you have to synchronize
-their actions somehow.
-
 Each Doctor has a screwdriver it his/her right hand, but the required minimum to act is two. So, 
 to get two at a time, the Doctor should grab the screwdriver from another Doctor on the left. But
 if everybody does it, then nothing is really changed, as every doctor will still have just one 
