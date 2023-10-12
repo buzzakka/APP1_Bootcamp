@@ -18,7 +18,9 @@ def index(request):
         else:
             messages.error(request, '<h3 style="color: red;">This file extension is not supported.</h3>')
             return redirect('index')
-    else:        
+    else:
+        if not os.path.exists('./media/'):
+            os.mkdir('./media/')
         music_form = MusicForm()
         music_list = [Song(name) for name in sorted(os.listdir('media/'))]
         data = {
@@ -29,4 +31,4 @@ def index(request):
 
 
 def file_cheeck(file_type: str) -> bool:
-    return file_type.startswith('audio')
+    return file_type and file_type.startswith('audio')
