@@ -1,3 +1,5 @@
+#!./venv/bin/python3
+
 from sqlalchemy import MetaData, String, Integer, Column, Float, Boolean, ForeignKey
 from sqlalchemy.orm import declarative_base, Session
 import sqlalchemy

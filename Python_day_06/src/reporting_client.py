@@ -1,4 +1,7 @@
-import proto.galaxy_pb2 as pb2, proto.galaxy_pb2_grpc as pb2_grpc
+#!./venv/bin/python3
+
+import proto.galaxy_pb2 as pb2
+import proto.galaxy_pb2_grpc as pb2_grpc
 import grpc
 import json
 import argparse

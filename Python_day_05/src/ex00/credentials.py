@@ -22,7 +22,7 @@ def application(environ, start_response):
     if environ['QUERY_STRING'] and parsed_url_query[0][-1] in names:
         name = parsed_url_query[0][-1]
         status = '200 OK'
-        response_body = json.dumps({"credentials": name}).encode('utf-8')
+        response_body = json.dumps({"credentials": names[name]}).encode('utf-8')
     else:
         status = '404 Unknown'
         response_body = json.dumps({"credentials": "unknown"}).encode('utf-8')
